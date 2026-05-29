@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#102a43" />
-  <title>Robomow ESP Firmware Installer</title>
-  <meta name="description" content="Web installer ESP32-S3 N16R8 firmware powered by ESP Web Tools." />
+  <title>Robomow ESP32-S3 Firmware Installer</title>
+  <meta name="description" content="Web installer for Robomow ESP32-S3 firmware powered by ESP Web Tools." />
   <link rel="stylesheet" href="assets/style.css" />
   <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
 </head>
@@ -16,22 +16,22 @@
         <span class="brand-mark" aria-hidden="true">R</span>
         <span class="brand-text">Robomow ESP Installer</span>
       </div>
-      <div class="toolbar">
-        <button class="lang-btn active" type="button" data-lang-button="ru">RU</button>
-        <button class="lang-btn" type="button" data-lang-button="en">EN</button>
+      <div class="toolbar" aria-label="Language">
+        <button class="lang-btn active" type="button" data-lang-button="en">EN</button>
+        <button class="lang-btn" type="button" data-lang-button="ru">RU</button>
       </div>
     </nav>
 
     <section class="hero-grid">
       <div>
         <p class="eyebrow" data-i18n="eyebrow">ESP Web Tools · GitHub Pages</p>
-        <h1 data-i18n="title">Загрузка прошивки Robomow ESP через браузер</h1>
+        <h1 data-i18n="title">Robomow ESP32-S3 firmware installation</h1>
         <p class="lead" data-i18n="lead">
-          Подключите ESP к USB, откройте страницу в Chrome или Edge и нажмите кнопку установки.
-          Прошивка будет записана через Web Serial без ручного запуска esptool.
+          Connect the ESP32-S3 board by USB, open this page in Chrome or Edge, and start the installer.
+          The firmware will be written through Web Serial without manually running esptool.
         </p>
         <div class="badges" aria-label="Capabilities">
-          <span>ESP32-S3 N16R8</span>
+          <span>ESP32-S3</span>
           <span>Web Serial</span>
           <span>GitHub Pages</span>
         </div>
@@ -39,29 +39,27 @@
 
       <div class="install-card" aria-label="Firmware installer">
         <div class="card-header">
-          <h2 data-i18n="installTitle">Установка прошивки</h2>
-          <p data-i18n="installSubtitle">Выберите профиль и запустите установку. UART‑логи в этом интерфейсе не выводятся.</p>
+          <h2 data-i18n="installTitle">Firmware installation</h2>
+          <p data-i18n="installSubtitle">Target device: Robomow ESP32-S3.</p>
         </div>
 
-        <label class="field-label" for="manifestSelect" data-i18n="profileLabel">Профиль прошивки</label>
-        <select id="manifestSelect" class="select">
-          <option value="firmware/manifest.json" data-i18n="profileDefault">Robomow ESP, автоопределение чипа</option>
-          <option value="firmware/manifest-esp32.json">Robomow ESP32</option>
-          <option value="firmware/manifest-esp32s3.json">Robomow ESP32-S3</option>
-        </select>
+        <div class="target-box" aria-label="Target firmware profile">
+          <span data-i18n="profileLabel">Firmware profile</span>
+          <strong>Robomow ESP32-S3</strong>
+        </div>
 
         <esp-web-install-button id="installButton" manifest="firmware/manifest.json">
-          <button class="primary-btn" slot="activate" data-i18n="installButton">Подключить и прошить</button>
+          <button class="primary-btn" slot="activate" data-i18n="installButton">Connect and install</button>
           <span slot="unsupported" data-i18n="unsupported">
-            Браузер не поддерживает Web Serial. Используйте Chrome, Edge или другой Chromium-браузер на ПК.
+            This browser does not support Web Serial. Use Chrome, Edge, or another Chromium browser on a desktop computer.
           </span>
           <span slot="not-allowed" data-i18n="notAllowed">
-            Web Serial работает только на HTTPS или localhost. Откройте страницу через GitHub Pages.
+            Web Serial works only over HTTPS or localhost. Open this page through GitHub Pages.
           </span>
         </esp-web-install-button>
 
         <p class="hint" data-i18n="installHint">
-          Перед прошивкой отключите питание моторов/ножа. Для первой установки обычно выбирайте стирание flash.
+          Before flashing, disconnect blade and motor power. For first installation, erase flash when prompted.
         </p>
       </div>
     </section>
@@ -69,60 +67,27 @@
 
   <main class="main">
     <section class="panel">
-      <h2 data-i18n="stepsTitle">Порядок действий</h2>
+      <h2 data-i18n="stepsTitle">Steps</h2>
       <ol class="steps">
-        <li data-i18n="step1">Подключите ESP32/ESP32-S3 к компьютеру качественным USB‑кабелем с передачей данных.</li>
-        <li data-i18n="step2">Откройте эту страницу в Chrome или Edge. На iOS Web Serial не работает.</li>
-        <li data-i18n="step3">Нажмите «Подключить и прошить», выберите USB‑порт и подтвердите запись.</li>
-        <li data-i18n="step4">После завершения дождитесь перезагрузки ESP и проверьте точку доступа или веб‑интерфейс прошивки.</li>
+        <li data-i18n="step1">Connect the ESP32-S3 to your computer using a good USB data cable.</li>
+        <li data-i18n="step2">Open this page in Chrome or Edge. Web Serial does not work on iOS.</li>
+        <li data-i18n="step3">Click “Connect and install”, select the USB port, and confirm flashing.</li>
+        <li data-i18n="step4">After flashing, wait for the ESP to reboot and open the firmware web interface at http://192.168.1.4/.</li>
       </ol>
+      <a class="ip-link" href="http://192.168.1.4/" target="_blank" rel="noreferrer">http://192.168.1.4/</a>
     </section>
 
     <section class="panel warning">
-      <h2 data-i18n="safetyTitle">Безопасность</h2>
+      <h2 data-i18n="safetyTitle">Safety</h2>
       <p data-i18n="safetyText">
-        Для Robomow это сервисная прошивка. Перед установкой физически исключите запуск ножа и движения:
-        снимите питание силовой части, не держите косилку на земле в активном состоянии, используйте аварийную остановку.
-      </p>
-    </section>
-
-    <section class="panel two-col">
-      <div>
-        <h2 data-i18n="firmwareTitle">Файлы прошивки</h2>
-        <p data-i18n="firmwareText">
-          Положите merged binary в каталог firmware и обновите manifest. Для ESP32 с ESP-IDF/Arduino обычно нужен один объединённый bin с offset 0.
-        </p>
-        <pre><code>firmware/
-  manifest.json
-  manifest-esp32.json
-  manifest-esp32s3.json
-  robomow-esp32-merged.bin
-  robomow-esp32s3-merged.bin</code></pre>
-      </div>
-      <div>
-        <h2 data-i18n="githubTitle">Публикация</h2>
-        <p data-i18n="githubText">
-          Сайт готов для GitHub Pages. После push включите Pages из GitHub Actions или используйте приложенный workflow.
-        </p>
-        <pre><code>git init
-git add .
-git commit -m "Initial Robomow web flasher"
-git branch -M main
-git remote add origin git@github.com:OWNER/REPO.git
-git push -u origin main</code></pre>
-      </div>
-    </section>
-
-    <section class="panel note">
-      <h2 data-i18n="uartTitle">UART‑логи отключены в интерфейсе сайта</h2>
-      <p data-i18n="uartText">
-        На странице нет режима просмотра UART. Manifest настроен без Improv‑ожидания, чтобы установщик не переходил в сервисный режим просмотра устройства после прошивки. Это не блокирует физический UART для человека с доступом к плате и внешним терминалом.
+        This is service firmware for Robomow. Before installation, physically prevent blade start and mower movement:
+        disconnect power from the drive/blade circuits, keep the mower in a safe service position, and use emergency stop when needed.
       </p>
     </section>
   </main>
 
   <footer class="footer">
-    <span data-i18n="footer">Installer powered by ESP Web Tools. Firmware project: Robomow ESP.</span>
+    <span data-i18n="footer">Installer powered by ESP Web Tools. Firmware project: Robomow ESP32-S3.</span>
   </footer>
 
   <script src="assets/app.js"></script>
