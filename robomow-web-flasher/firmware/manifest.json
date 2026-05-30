@@ -1,6 +1,6 @@
 {
   "name": "Robomow ESP Firmware",
-  "version": "0.1.0",
+  "version": "2.3.0-pre.49-pub",
   "new_install_prompt_erase": true,
   "new_install_improv_wait_time": 0,
   "builds": [
